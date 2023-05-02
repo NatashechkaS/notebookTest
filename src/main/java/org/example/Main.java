@@ -14,7 +14,7 @@ public class Main {
         String ch1 = "1";
         int x = 0;
         System.out.println("Для завершения вывода информации введите - stop");
-        ArrayList<String> numbers = getPhones();
+        String[] numbers = getPhones();
         while (true) {
             try {
                 ch1 = console.nextLine();
@@ -26,24 +26,24 @@ public class Main {
                 System.out.println(getPhoneNumber(numbers, x - 1));
 
             } catch (Exception e) {
-                System.out.println("Неверный формат данных! " + e.getMessage());
+                System.out.println("Неверный формат данных!" + e.getMessage());
             }
         }
     }
 
-    static String getPhoneNumber(ArrayList<String> phones, int i) {
-        return phones.get(i);
+    static String getPhoneNumber(String[] phones, int i) {
+        return (phones[i]);
     }
 
-    static ArrayList<String> getPhones() {
+    static String[] getPhones() {
 
-        ArrayList<String> phones = new ArrayList<String>();
-        phones.add("+7910-875-37-24");
-        phones.add("+7910-357-29-54");
-        phones.add("+7910-987-65-43");
-        phones.add("+7915-967-65-41");
-        phones.add("+7910-900-65-90");
-        phones.add("+7910-777-65-65");
+        String[] phones = new String[6];
+        phones[0] = "+7910-875-37-24";
+        phones[1] = "+7910-357-29-54";
+        phones[2] = "+7910-987-65-43";
+        phones[3] = "+7915-967-65-41";
+        phones[4] = "+7910-900-65-90";
+        phones[5] = "+7910-777-65-65";
 
         return phones;
     }
@@ -61,5 +61,4 @@ public class Main {
 
         return listOfStudents;
     }
-
 }
