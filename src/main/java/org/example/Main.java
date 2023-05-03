@@ -9,7 +9,9 @@ public class Main {
     public static void main(String[] args) {
 
         System.out.println("Выберите порядковый номер студента: ");
-        System.out.println(getListOfStudents());
+        // System.out.println(getListOfStudents());
+        Student b1 = new Student();
+        b1.getAllStudents();
         Scanner console = new Scanner(System.in);
         String ch1 = "1";
         int x = 0;
@@ -52,13 +54,33 @@ public class Main {
 
         ArrayList<String> listOfStudents = new ArrayList<String>();
 
-        listOfStudents.add("1. Мицик Матвей Антонович");
-        listOfStudents.add("\n2. Воронова Юлия Павловна");
-        listOfStudents.add("\n3. Кузьмин Вячеслав Александрович");
-        listOfStudents.add("\n4. Пашков Дмитрий Сергеевич");
-        listOfStudents.add("\n5. Орлова Мария Васильевна");
-        listOfStudents.add("\n6. Сусликов Иван Михайлович");
+        listOfStudents.add("Мицик Матвей Антонович");
+        listOfStudents.add("Воронова Юлия Павловна");
+        listOfStudents.add("Кузьмин Вячеслав Александрович");
+        listOfStudents.add("Пашков Дмитрий Сергеевич");
+        listOfStudents.add("Орлова Мария Васильевна");
+        listOfStudents.add("Сусликов Иван Михайлович");
 
         return listOfStudents;
+    }
+}
+
+interface StudentDAO {
+    void getAllStudents();
+}
+
+class Student implements StudentDAO {
+    private String phone;
+    private String fullName;
+
+    String getFullName() {
+        return fullName;
+    }
+
+    Student() {
+        fullName = Main.getListOfStudents().toString();
+    }
+    public void getAllStudents() {
+        System.out.println(fullName);
     }
 }
