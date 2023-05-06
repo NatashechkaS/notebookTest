@@ -5,15 +5,16 @@ import java.util.Scanner;
 
 
 public class Main {
-
+    public static String phone;
+    public static String fullName;
 
     public static void main(String[] args) {
 
 
         // System.out.println(getListOfStudents());
         var sDAL = new StudentsDAOArrayListImpl();
-        sDAL.getAllStudents();
-        System.out.println(sDAL);
+        var sDAL1 = new Student(fullName, phone);
+        sDAL1.getFullName();
         System.out.println("Выберите порядковый номер студента: ");
         Scanner console = new Scanner(System.in);
         String ch1 = "1";
@@ -28,11 +29,10 @@ public class Main {
                     break;
                 }
                 x = Integer.parseInt(ch1);
-                System.out.println(sDAL);
+                System.out.println(sDAL1.getFullName());
             } catch (Exception e) {
                 System.out.println("Неверный формат данных!" + e.getMessage());
             }
         }
     }
-
 }
