@@ -13,11 +13,8 @@ public class Main {
         // System.out.println(getListOfStudents());
         var sDAL = new StudentsDAOArrayListImpl();
         sDAL.getAllStudents();
-
-
+        System.out.println(sDAL);
         System.out.println("Выберите порядковый номер студента: ");
-
-
         Scanner console = new Scanner(System.in);
         String ch1 = "1";
         int x = 0;
@@ -31,17 +28,11 @@ public class Main {
                     break;
                 }
                 x = Integer.parseInt(ch1);
-                System.out.println(getPhoneNumber(numbers, x - 1));
-
+                System.out.println(sDAL);
             } catch (Exception e) {
                 System.out.println("Неверный формат данных!" + e.getMessage());
             }
         }
     }
 
-    public static List<Student> getPhoneNumber(List<Student> listOfStudents, int i) {
-
-        return listOfStudents;
-    }
 }
-

@@ -3,11 +3,13 @@ package org.example;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StudentsDAOArrayListImpl {
+public class StudentsDAOArrayListImpl implements StudentDAO{
     private List<Student> students;
-    private List<Student> phone;
 
     public List<Student> getAllStudents(){
+        return students;
+    }
+    StudentsDAOArrayListImpl(){
         List<Student> listOfStudents = new ArrayList<>();
 
         listOfStudents.add(new Student("Мицик Матвей Антонович", "+7910-875-37-24"));
@@ -18,13 +20,5 @@ public class StudentsDAOArrayListImpl {
         listOfStudents.add(new Student("Сусликов Иван Михайлович", "+7913-815-12-87"));
 
         this.students = listOfStudents;
-        this.phone = listOfStudents;
-        System.out.println("Все студенты из списка студнтов: ");
-        for (var student: students) {
-            System.out.println(student.getFullName());
-        }
-
-
-        return listOfStudents;
     }
 }
