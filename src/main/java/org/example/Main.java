@@ -5,34 +5,21 @@ import java.util.Scanner;
 
 
 public class Main {
-    public static String phone;
-    public static String fullName;
 
     public static void main(String[] args) {
-
-
-        // System.out.println(getListOfStudents());
-        var sDAL = new StudentsDAOArrayListImpl();
-        var sDAL1 = new Student(fullName, phone);
-        sDAL1.getFullName();
-        System.out.println("Выберите порядковый номер студента: ");
-        Scanner console = new Scanner(System.in);
-        String ch1 = "1";
-        int x = 0;
-        System.out.println("Для завершения вывода информации введите - stop");
-        List<Student> numbers = sDAL.getAllStudents();   // тут тупик
-        while (true) {
-            try {
-                ch1 = console.nextLine();
-                if (ch1.equals("stop")) {
-                    System.out.println("Завершение работы...");
-                    break;
-                }
-                x = Integer.parseInt(ch1);
-                System.out.println(sDAL1.getFullName());
-            } catch (Exception e) {
-                System.out.println("Неверный формат данных!" + e.getMessage());
-            }
+        StudentDAO studentDAO = new StudentsDAOArrayListImpl();
+        System.out.println("Вывод информации о студентах");
+        List<Student> allStudents = studentDAO.getAllStudents();
+        for (int i = 0; i < allStudents.size(); i++) {
+            System.out.println(i + ". " + allStudents.get(i).getFullName()); //индекс каждого студента выводится начиная с 0, так как в списке они хранятся начиная с 0 элемента. Если есть желание, то можно сделать вывод в привычном формате, начиная с 1
         }
+        System.out.println("Введите id студента, номер телефона которого Вы хотите получить: ");
+        Scanner scanner = new Scanner(System.in);
+        int index = scanner.nextInt();
+        if (index < 0 || index > allStudents.size() - 1) { //проверка, на корректность данных
+            throw new IllegalArgumentException("Ошибка, выход за границы списка!");
+        }
+        System.out.println("Телефон: " + allStudents.get(index).getPhone());
+        System.out.println("Завершение работы...");
     }
 }
